@@ -3,6 +3,7 @@ import random
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
 def get_cards(cardsList):
+    """ Deal cards for both parties """
     if cardsList == []:
         no_of_cards = 2
     else:
@@ -13,6 +14,7 @@ def get_cards(cardsList):
 
 
 def get_total(cardsList):
+    """ Calculate the total """
     total = 0
     for card in cardsList:
         total += card
@@ -20,12 +22,15 @@ def get_total(cardsList):
 
 
 def restart():
+    """ Restart the program """
     response = input("Do you want to play again? Type 'y' or 'n': ")
     if response.lower() == "y":
+        # Recursive Function
         blackjack()
 
 
 def drawCard(myCards, myTotal, dealerCards, dealerTotal, response):
+    """ Draw cards for both parties """
     if response.lower() == "y":
         get_cards(myCards)
         if dealerTotal < 17:
@@ -64,6 +69,7 @@ def drawCard(myCards, myTotal, dealerCards, dealerTotal, response):
 
 
 def endGame(myCards, myTotal, dealerCards, dealerTotal):
+    """ End the game when one party wins or loses """
     while dealerTotal < 17:
         get_cards(dealerCards)
         dealerTotal = get_total(dealerCards)
@@ -85,6 +91,7 @@ def endGame(myCards, myTotal, dealerCards, dealerTotal):
 
 
 def finalHand(myCards, myTotal, dealerCards, dealerTotal):
+    """ Display the final hand of both parties """
     print(f"Your final hand: {myCards}, final score: {myTotal}")
     print(f"Computer's final hand: {dealerCards}, final score {dealerTotal}")
     restart()
@@ -92,6 +99,7 @@ def finalHand(myCards, myTotal, dealerCards, dealerTotal):
 
 
 def blackjack():
+    """ The main program """
     gameContinue = True
     while gameContinue:
         myCards = []
